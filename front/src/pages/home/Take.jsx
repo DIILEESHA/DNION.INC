@@ -289,15 +289,15 @@ const Take = () => {
             <div className="liner"></div>
           </div>
 
-          <div className="dg">
-            <div className="dospas">
+          <div className="dg dalla">
+            <div className="dospas ">
               <Link to="/" className="a">
                 <h2 className="nav_lgos">© APC 2025</h2>
               </Link>
             </div>
             <div className="dospas">
               <ul className="bottom_uls">
-                <li className="bottom_lis">PRIVACY POLICY</li>
+                <li className="bottom_lis">Privacy Policy</li>
                 <li className="bottom_lis">Terms & Conditions</li>
               </ul>
             </div>

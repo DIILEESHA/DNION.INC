@@ -180,6 +180,11 @@
     padding: 0 15px;
   }
 
+  .testo_img_container {
+    height: auto;
+    min-height: auto;
+  }
+
   .testo_mini_card {
     padding: 30px 20px;
   }
@@ -203,6 +208,7 @@
 @media (max-width: 480px) {
   .hello {
     font-size: 26px;
+    margin-bottom: 10px;
   }
 
   .testo_mini_card {
@@ -223,6 +229,6 @@
   }
 
   .testo_contain {
-    padding: 20px;
+    padding: 20px 0px;
   }
 }

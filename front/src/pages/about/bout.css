@@ -1,0 +1,86 @@
+.about_img {
+  background-image: url("https://img.freepik.com/free-photo/construction-silhouette_1150-8336.jpg?t=st=1744726446~exp=1744730046~hmac=455eb8ba6350966deb1a3a8e697d0077471e6c8b3a7b495acf068557251b3ad4&w=900");
+  width: 100%;
+  height: 45vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
+  position: relative;
+}
+.about_img::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 7, 64, 0.7),
+    rgba(1, 3, 38, 0.2)
+  );
+  width: 100%;
+  position: absolute;
+  content: "";
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+}
+
+.about_title {
+  z-index: 10;
+  color: #fff;
+  font-family: "oswald";
+  font-size: 70px;
+  text-transform: capitalize;
+}
+.about-content {
+  background-color: #fdfaf6;
+
+  padding: 50px 250px;
+  font-family: "man";
+}
+
+.about-content ul {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  gap: 20px;
+}
+
+.heading-2 {
+  font-family: "oswald";
+  font-size: 35px;
+}
+
+.heading-3 {
+  font-family: "oswald";
+  font-size: 30px;
+  line-height: 150%;
+}
+.rich-image {
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.image-caption {
+  font-family: "man";
+}
+
+.block-para {
+  font-family: "man";
+  font-size: 17px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+.custom-blockquote {
+  /* font-style: italic; */
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  line-height: 150%;
+  font-size: 17px;
+  font-family: "man";
+}

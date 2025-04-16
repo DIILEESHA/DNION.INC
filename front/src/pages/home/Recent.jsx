@@ -23,6 +23,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "./home.css";
+import Take from "./Take";
 // Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -494,6 +495,8 @@ const Entry = () => {
           </div>
         )}
       </Modal>
+
+      <Take />
     </div>
   );
 };

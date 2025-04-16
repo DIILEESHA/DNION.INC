@@ -104,11 +104,15 @@
     font-size: 50px;
   }
 
-  .heading-3{
+  .heading-3 {
     font-size: 20px;
   }
 
-  .heading-2{
+  .heading-2 {
     font-size: 25px;
+  }
+
+  .about_img {
+    height: 35vh;
   }
 }

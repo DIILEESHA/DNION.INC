@@ -124,7 +124,7 @@ const Entry = () => {
   const [hoveredCard, setHoveredCard] = React.useState(null);
 
   return (
-    <div className="entry_container">
+    <div className="entry_container cop">
       {/* Hero Section with Enhanced Parallax */}
 
       {/* Services Section with Enhanced Animations */}

@@ -157,7 +157,9 @@
 /* //entrycss */
 
 .entry_container {
-  /* background-color: #fdfaf6; */
+}
+.cop {
+  background-color: #fdfaf6;
 }
 
 .service_grid {

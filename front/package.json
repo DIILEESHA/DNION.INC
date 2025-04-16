@@ -13,6 +13,7 @@
     "@portabletext/react": "^3.2.1",
     "@sanity/client": "^6.29.0",
     "@sanity/image-url": "^1.1.0",
+    "@studio-freight/lenis": "^1.0.42",
     "antd": "^5.24.7",
     "framer-motion": "^12.6.5",
     "react": "^19.0.0",

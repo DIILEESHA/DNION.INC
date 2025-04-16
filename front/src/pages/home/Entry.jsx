@@ -206,7 +206,7 @@ const Entry = () => {
 
   
 
-      <Take />
+      {/* <Take /> */}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About"; // Make sure to create this component
@@ -8,10 +7,12 @@ import Entry from "./pages/home/Entry";
 import All from "./pages/home/All";
 import Projects from "./pages/projects/Projects";
 import Service from "./pages/service/Service";
-
+import ScrollToTop from "./ScrollToTop";
 const App = () => {
+  
   return (
     <Router>
+      <ScrollToTop />
       <div>
         <Nav />
         <Routes>

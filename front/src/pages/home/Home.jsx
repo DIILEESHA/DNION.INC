@@ -3,6 +3,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./home.css";
 import Nav from "../../components/nav/Nav";
+import { Link } from "react-router-dom";
 
 // Enhanced Animation Variants
 const fadeInUp = {
@@ -206,12 +207,14 @@ const Home = () => {
                 style={{ display: "inline-block" }}
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                animate={{
-                  // y: isHovered ? -5 : 0,
-                  // scale: isHovered ? 1.05 : 1,
-                  // rotate: isHovered ? 2 : 0,
-                  // transition: { type: "spring", stiffness: 500 },
-                }}
+                animate={
+                  {
+                    // y: isHovered ? -5 : 0,
+                    // scale: isHovered ? 1.05 : 1,
+                    // rotate: isHovered ? 2 : 0,
+                    // transition: { type: "spring", stiffness: 500 },
+                  }
+                }
               >
                 one strong foundation
               </motion.span>{" "}
@@ -240,7 +243,9 @@ const Home = () => {
                     },
                   }}
                 >
-                  View Projects{" "}
+                  <Link to="/projects" className="a">
+                    View Projects{" "}
+                  </Link>
                   <motion.span
                     animate={{
                       rotate: [0, 20, 0],

@@ -120,7 +120,7 @@ const About = () => {
     <div className="about-container">
       <motion.div
         className="about_img"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 0 }}
         animate={controls}
         ref={ref}
         variants={{
@@ -153,7 +153,7 @@ const About = () => {
           visible: { opacity: 1, y: 0, transition: { duration: 1.2 } },
         }}
       >
-        {/* <Testo /> */}
+        <Testo />
 
         <Take />
       </motion.div>

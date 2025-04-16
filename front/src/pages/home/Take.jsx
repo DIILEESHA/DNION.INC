@@ -3,6 +3,10 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./home.css";
 import Testo from "../../components/testo/Testo";
+import { Link } from "react-router-dom";
+import { FaFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 
 // Enhanced Animation Variants
 const fadeInUp = {
@@ -258,6 +262,47 @@ const Take = () => {
             </div>
           </AnimatedSection>
         </motion.div>
+
+        <div className="dospa">
+          <div className="dg">
+            <div className="dospas">
+              <Link to="/" className="a">
+                <h2 className="nav_lgos">APC</h2>
+              </Link>
+            </div>
+            <div className="dospas">
+              <div className="icon_set">
+                <FaFacebook className="icony" />
+                <FaInstagram className="icony" />
+                <FaXTwitter className="icony" />
+              </div>
+            </div>
+          </div>
+
+          <ul className="bottom_ul">
+            <li className="bottom_li">About Us</li>
+            <li className="bottom_li">Projects</li>
+            <li className="bottom_li">Services</li>
+            <li className="bottom_li">Contact Us</li>
+          </ul>
+          <div className="dolki">
+            <div className="liner"></div>
+          </div>
+
+          <div className="dg">
+            <div className="dospas">
+              <Link to="/" className="a">
+                <h2 className="nav_lgos">© APC 2025</h2>
+              </Link>
+            </div>
+            <div className="dospas">
+              <ul className="bottom_uls">
+                <li className="bottom_lis">PRIVACY POLICY</li>
+                <li className="bottom_lis">Terms & Conditions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );

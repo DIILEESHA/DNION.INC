@@ -1,19 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Modal } from "antd";
 import { useInView } from "react-intersection-observer";
 import { client, urlFor } from "../../lib/sanityClient";
-import "./home.css";
+import "../home/home.css";
 import { PortableText } from "@portabletext/react";
-import left from "../../assets/left.png";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-
-// Animation Variants (same as your original)
-
+import Take from "../home/Take";
+// Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -38,6 +31,30 @@ const fadeIn = {
   },
 };
 
+const slideInLeft = {
+  hidden: { opacity: 0, x: -80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -45,6 +62,18 @@ const staggerContainer = {
     transition: {
       staggerChildren: 0.15,
       delayChildren: 0.2,
+    },
+  },
+};
+
+const cardHover = {
+  hover: {
+    y: -10,
+    boxShadow:
+      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
     },
   },
 };
@@ -83,9 +112,6 @@ const Entry = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-
   useEffect(() => {
     const fetchServices = async () => {
       try {
@@ -117,6 +143,24 @@ const Entry = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner" />
+        <p>Loading services...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error-container">
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
 
   const portableTextComponents = {
     types: {
@@ -189,91 +233,68 @@ const Entry = () => {
     },
   };
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner" />
-        <p>Loading services...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="error-container">
-        <p>{error}</p>
-        <button onClick={() => window.location.reload()}>Retry</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="entry_container">
-      <AnimatedSection variants={staggerContainer}>
-        <div className="ep daspi">
-          <motion.div variants={fadeInUp}>
-            <motion.h2 className="recent_title">
-              Our services & solutions
-            </motion.h2>
+    <div className="about-container">
+      <motion.div
+        className="about_img pola"
+        // initial={{ opacity: 0, y: 50 }}
+        // animate={controls}
+        // ref={ref}
+        // variants={{
+        //   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+        // }}
+      >
+        <h1 className="about_title">Our Services </h1>
+      </motion.div>
+
+      <div className="entry_container">
+        <AnimatedSection variants={staggerContainer}>
+          <div className="ep">
+            <motion.div variants={fadeInUp}>
+              <motion.h2 className="recent_title">
+                Our services & solutions
+              </motion.h2>
+              <motion.div
+                className="tol"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </motion.div>
+
+            <motion.p
+              className="service_p"
+              variants={fadeIn}
+              whileInView="visible"
+              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            >
+              We deliver exceptional craftsmanship with attention to detail. Our
+              team combines traditional techniques with modern innovation.
+            </motion.p>
+
             <motion.div
-              className="tol"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </motion.div>
-
-          <motion.p
-            className="service_p"
-            variants={fadeIn}
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            We deliver exceptional craftsmanship with attention to detail. Our
-            team combines traditional techniques with modern innovation.
-          </motion.p>
-          {/* Arrows for Swiper */}
-          <div className="flex_arrows">
-            <div className="icon_left" ref={prevRef}>
-              <img src={left} alt="prev" className="lefto" />
-            </div>
-            <div className="icon_left" ref={nextRef}>
-              <img src={left} alt="next" className="righto" />
-            </div>
-          </div>
-          <div className="line"></div>
-
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-            spaceBetween={10}
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            // className="service_grid"
-          >
-            {services.map((service, index) => (
-              <SwiperSlide key={index}>
+              className="service_grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {/* {services.map((service, index) => ( */}
+              {services.map((service, index) => (
                 <motion.div
+                  key={index}
                   className="service_sub"
-                  whileHover={{ y: -10 }}
+                  variants={index % 2 === 0 ? slideInLeft : slideInRight}
+                  whileHover="hover"
+                  variants={cardHover}
                   onHoverStart={() => setHoveredCard(index)}
                   onHoverEnd={() => setHoveredCard(null)}
                   onClick={() => showModal(service)}
                 >
                   <motion.div className="img-container">
                     <motion.img
-                      src={urlFor(service.imageUrl).url()}
+                      src={urlFor(service.imageUrl).width(600).url()}
                       alt={service.imageAlt}
                       className="service_img"
                       whileHover={{ scale: 1.05 }}
@@ -306,36 +327,39 @@ const Entry = () => {
                     {service.title}
                   </motion.h2>
                 </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </AnimatedSection>
-
-      <Modal
-        open={isModalVisible}
-        onCancel={handleCancel}
-        footer={null}
-        width="100vw"
-        className="service-modal"
-        closeIcon={<div className="close">✕</div>}
-      >
-        {selectedService && (
-          <div>
-            <img
-              src={urlFor(selectedService.imageUrl).width(600).url()}
-              className="haha"
-            />
-            <p className="service-subtitle">
-              {selectedService.shortDescription}
-            </p>
-            <PortableText
-              value={selectedService.fullDescription}
-              components={portableTextComponents}
-            />
+              ))}
+            </motion.div>
           </div>
-        )}
-      </Modal>
+        </AnimatedSection>
+
+        {/* Ant Design Modal */}
+        <Modal
+          open={isModalVisible}
+          onCancel={handleCancel}
+          footer={null}
+          // width={1000}
+          width="100vw"
+          className="service-modal"
+          closeIcon={<div className="close">✕</div>}
+        >
+          {selectedService && (
+            <div>
+              <img
+                src={urlFor(selectedService.imageUrl).width(600).url()}
+                className="haha"
+              />
+              <p className="service-subtitle">
+                {selectedService.shortDescription}
+              </p>
+              <PortableText
+                value={selectedService.fullDescription}
+                components={portableTextComponents}
+              />
+            </div>
+          )}
+        </Modal>
+      </div>
+      <Take />
     </div>
   );
 };

@@ -12,6 +12,10 @@
   align-items: center;
   position: relative;
 }
+
+.pola {
+  background-image: url("https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?q=80&w=1379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
 .about_img::after {
   background: linear-gradient(
     to bottom,
@@ -83,4 +87,28 @@
   line-height: 150%;
   font-size: 17px;
   font-family: "man";
+}
+@media screen and (max-width: 1139px) {
+  .about-content {
+    padding: 50px 100px;
+  }
+}
+@media screen and (max-width: 749px) {
+  .about-content {
+    padding: 50px 20px;
+  }
+
+  .about_title {
+    text-align: center;
+    line-height: 150%;
+    font-size: 50px;
+  }
+
+  .heading-3{
+    font-size: 20px;
+  }
+
+  .heading-2{
+    font-size: 25px;
+  }
 }

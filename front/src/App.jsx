@@ -6,6 +6,8 @@ import "./App.css";
 import Nav from "./components/nav/Nav";
 import Entry from "./pages/home/Entry";
 import All from "./pages/home/All";
+import Projects from "./pages/projects/Projects";
+import Service from "./pages/service/Service";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<All />} />
           <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/service" element={<Service />} />
         </Routes>
       </div>
     </Router>

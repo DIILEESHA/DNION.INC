@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { client, urlFor } from "../../lib/sanityClient";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import "./testo.css";
 
 const Testo = () => {
@@ -76,51 +77,58 @@ const Testo = () => {
           <motion.h2 className="hello" variants={itemVariants}>
             Testimonials from our Clients
           </motion.h2>
+          
+          <div className="testx">
+            <Swiper
+              modules={[Pagination, Autoplay, Navigation]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ 
+                clickable: true,
+                dynamicBullets: true
+              }}
+              autoplay={{ 
+                delay: 5000, 
+                disableOnInteraction: false 
+              }}
+              loop={true}
+              navigation={true}
+              centeredSlides={true}
+              className="testimonial-swiper"
+            >
+              {testimonials.map((item) => (
+                <SwiperSlide key={item._id}>
+                  <motion.div className="testo_card" variants={itemVariants}>
+                    <div className="testo_mini_card">
+                      <motion.div
+                        className="testo_person"
+                        variants={imageBorderVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                      >
+                        <div className="animated-border">
+                          <img
+                            src={urlFor(item.image).width(200).url()}
+                            alt={item.name}
+                            className="testo_p"
+                          />
+                        </div>
+                      </motion.div>
 
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 1800, disableOnInteraction: false }}
-            loop={true}
-            className="top"
-          >
-            {testimonials.map((item) => (
-              <SwiperSlide key={item._id}>
-                <motion.div className="testo_card" variants={itemVariants}>
-                  <div className="testo_mini_card">
-                    <motion.div
-                      className="testo_person"
-                      variants={imageBorderVariants}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
-                    >
-                      <div className="animated-border">
-                        <img
-                          src={urlFor(item.image).width(100).url()}
-                          alt={item.name}
-                          className="testo_p"
-                        />
-                      </div>
-                    </motion.div>
+                      <motion.h2 className="testo_person_name" variants={itemVariants}>
+                        {item.name}
+                      </motion.h2>
 
-                    <motion.h2
-                      className="testo_person_name"
-                      variants={itemVariants}
-                    >
-                      {item.name}
-                    </motion.h2>
-
-                    <motion.p className="review" variants={itemVariants}>
-                      {item.review}
-                    </motion.p>
-                  </div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                      <motion.p className="review" variants={itemVariants}>
+                        {item.review}
+                      </motion.p>
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </motion.div>
       </div>
     </motion.div>

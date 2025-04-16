@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { Modal } from "antd";
 import { useInView } from "react-intersection-observer";
 import { client, urlFor } from "../../lib/sanityClient";
 import { PortableText } from "@portabletext/react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import left from "../../assets/left.png";
+import "swiper/css";
+import "swiper/css/navigation";
 import { Navigation, Pagination, EffectFade } from "swiper/modules";
 import {
   FiArrowRight,
@@ -12,6 +15,9 @@ import {
   FiChevronLeft,
   FiChevronRight,
 } from "react-icons/fi";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -123,6 +129,9 @@ const Entry = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -261,7 +270,7 @@ const Entry = () => {
   return (
     <div className="entry_container">
       <AnimatedSection variants={staggerContainer}>
-        <div className="ep">
+        <div className="ep daspi nappi">
           <motion.div variants={fadeInUp}>
             <motion.h2 className="recent_title">Our Recent Projects</motion.h2>
             <motion.div
@@ -282,65 +291,94 @@ const Entry = () => {
             Explore our portfolio of completed projects showcasing our
             craftsmanship and attention to detail.
           </motion.p>
-
+          <div className="flex_arrows">
+            <div
+              className="icon_left"
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <img src={left} alt="prev" className="lefto" />
+            </div>
+            <div
+              className="icon_left"
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <img src={left} alt="next" className="righto" />
+            </div>
+          </div>
+          <div className="line"></div>
           <motion.div
-            className="service_grid" // Keep service_grid class for consistency
+            className=""
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {projects.map((project, index) => (
-              <motion.div
-                key={project._id}
-                className="service_sub" // Keep service_sub class for consistency
-                variants={index % 2 === 0 ? slideInLeft : slideInRight}
-                whileHover="hover"
-                variants={cardHover}
-                onHoverStart={() => setHoveredCard(index)}
-                onHoverEnd={() => setHoveredCard(null)}
-              >
-                {/* Single image view with service_img class */}
-                <div
-                  className="img-container"
-                  onClick={() => showModal(project, 0)}
-                >
-                  <motion.img
-                    src={urlFor(project.images[0]).url()}
-                    alt={project.images[0].alt || `Project ${index + 1}`}
-                    className="service_img"
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ scale: 1 }}
-                    animate={{
-                      scale: hoveredCard === index ? 1.05 : 1,
-                      transition: { duration: 0.3 },
-                    }}
-                  />
-                  <AnimatePresence>
-                    {hoveredCard === index && (
-                      <motion.div
-                        className="service-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <p>{project.shortDescription}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={10}
+              // slidesPerView={1}
+              breakpoints={{
+                320: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              className="projects-swiper"
+            >
+              {projects.map((project, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    className="service_sub"
+                    variants={index % 2 === 0 ? slideInLeft : slideInRight}
+                    whileHover="hover"
+                    variants={cardHover}
+                    onHoverStart={() => setHoveredCard(index)}
+                    onHoverEnd={() => setHoveredCard(null)}
+                  >
+                    <div
+                      className="img-container"
+                      onClick={() => showModal(project, 0)}
+                    >
+                      <motion.img
+                        src={urlFor(project.images[0]).url()}
+                        alt={project.images[0].alt || `Project ${index + 1}`}
+                        className="service_img"
+                        whileHover={{ scale: 1.05 }}
+                        initial={{ scale: 1 }}
+                        animate={{
+                          scale: hoveredCard === index ? 1.05 : 1,
+                          transition: { duration: 0.3 },
+                        }}
+                      />
+                      <AnimatePresence>
+                        {hoveredCard === index && (
+                          <motion.div
+                            className="service-overlay"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                          >
+                            <p>{project.shortDescription}</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
 
-                <motion.h2
-                  className="service_name"
-                  animate={{
-                    color: hoveredCard === index ? "#ff6b00" : "#333",
-                    transition: { duration: 0.3 },
-                  }}
-                >
-                  {project.title}
-                </motion.h2>
-              </motion.div>
-            ))}
+                    <motion.h2
+                      className="service_name"
+                      animate={{
+                        color: hoveredCard === index ? "#ff6b00" : "#333",
+                        transition: { duration: 0.3 },
+                      }}
+                    >
+                      {project.title}
+                    </motion.h2>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </motion.div>
         </div>
       </AnimatedSection>
@@ -353,7 +391,6 @@ const Entry = () => {
         width="100%"
         // style={{ maxWidth: "1200px" }}
         className="service-modals"
-
         closeIcon={<FiX className="modal-close-icon" />}
       >
         {selectedProject && (

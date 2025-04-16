@@ -5,6 +5,7 @@ import "./home.css";
 import Testo from "../../components/testo/Testo";
 import Serve from "../../pages/home/Serve";
 import Recent from "../../pages/home/Recent";
+import Take from "./Take";
 // Enhanced Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -198,146 +199,14 @@ const Entry = () => {
           {/* Recent Projects with Enhanced Effects */}
 
           <Recent />
-         
+
           <div className="freeby"></div>
         </div>
       </AnimatedSection>
 
-      {/* Enhanced CTA Section */}
-      <motion.div
-        className="conta"
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <motion.div
-          className="dota"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          <motion.h2
-            className="dota_text"
-            animate={{
-              color: ["#000000", "#ff6b00", "#000000"],
-              transition: {
-                duration: 8,
-                repeat: Infinity,
-                ease: "linear",
-              },
-            }}
-          >
-            Ready to start your construction project? We're here to help!
-          </motion.h2>
-        </motion.div>
-        <motion.div
-          className="dota"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <motion.button
-            className="get"
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "#ff6b00",
-              color: "white",
-              boxShadow: "0 10px 20px rgba(255,107,0,0.3)",
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.span
-              animate={{
-                x: [0, 5, 0],
-                transition: {
-                  repeat: Infinity,
-                  duration: 2,
-                },
-              }}
-            >
-              Get Free Consultation
-            </motion.span>
-          </motion.button>
-        </motion.div>
-      </motion.div>
+  
 
-      <motion.div
-        className="home_container das"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        <motion.div
-          className="home_content"
-          initial={{ y: 40 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <AnimatedSection variants={fadeIn} threshold={0.2}>
-            <motion.p
-              className="sm_para"
-              whileHover={{ letterSpacing: "1px" }}
-              transition={{ duration: 0.3 }}
-            >
-              Your Trusted Construction Company
-            </motion.p>
-          </AnimatedSection>
-
-          <AnimatedSection variants={fadeInUp} threshold={0.2}>
-            <motion.h1
-              className="home_para dii"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Building Your{" "}
-              <motion.span
-                style={{ display: "inline-block", textDecoration: "underline" }}
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                  transition: {
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    duration: 4,
-                  },
-                }}
-              >
-                Dream
-              </motion.span>{" "}
-              Home
-            </motion.h1>
-          </AnimatedSection>
-
-          <AnimatedSection variants={scaleUp}>
-            <div className="boo">
-              <motion.button
-                className="btn"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0px 10px 25px rgba(0,0,0,0.15)",
-                  backgroundColor: "#ff6b00",
-                  color: "white",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.span
-                  animate={{
-                    x: [0, 5, 0],
-                    transition: {
-                      repeat: Infinity,
-                      duration: 2,
-                    },
-                  }}
-                >
-                  Contact Us →
-                </motion.span>
-              </motion.button>
-            </div>
-          </AnimatedSection>
-        </motion.div>
-      </motion.div>
+      <Take />
     </div>
   );
 };

@@ -390,9 +390,9 @@ const Entry = () => {
         onCancel={handleCancel}
         footer={null}
         width="100%"
-        // style={{ maxWidth: "1200px" }}
-        className="service-modals"
-        closeIcon={<FiX className="modal-close-icon" />}
+        width="100vw"
+        className="service-modal"
+        closeIcon={<div className="close">✕</div>}
       >
         {selectedProject && (
           <div className="project-modal-content">

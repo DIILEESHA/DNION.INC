@@ -491,8 +491,11 @@
   gap: 8px;
 }
 
-.haha {
+.haha,
+.modal-image {
   width: 100%;
+  height: 55vh;
+  object-fit: cover;
 }
 
 .service-modal {
@@ -526,7 +529,7 @@
 .modal-image {
   width: 100%;
   object-fit: cover;
-  height: 100vh;
+  height: 70vh;
 }
 .flexy {
   display: flex;
@@ -687,6 +690,13 @@
     /* margin: 20px 0px; */
   }
 
+  .haha,
+  .modal-image {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+  }
+
   .bussy {
     display: flex !important;
   }
@@ -699,14 +709,14 @@
     margin: 20px 0px;
   }
   .daspi {
-    padding:40px 20px;
+    padding: 40px 20px;
   }
   .service_grid {
     grid-template-columns: repeat(1, 1fr);
     padding: 10px;
     gap: 20px;
   }
-  .das{
+  .das {
     height: 50vh;
   }
 }
@@ -714,10 +724,21 @@
 @media screen and (max-width: 600px) {
   .home_container {
     height: auto;
-    min-height:auto;
+    min-height: auto;
     position: relative;
   }
 
+  .flexy {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .haha,
+  .modal-image {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
 
   .home_content {
     display: flex;
@@ -776,10 +797,8 @@
     /* height: auto; */
   }
 }
-@media screen and (max-width:550px){
-
-.das{
+@media screen and (max-width: 550px) {
+  .das {
     height: 70vh;
   }
-
 }

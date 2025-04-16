@@ -7,4 +7,4 @@ import testomonial from "./testimonial"
 import service from './service'
 import project from './project'
 
-export const schemaTypes = [post, author, category, blockContent, about, testomonial, service,project]
+export const schemaTypes = [blockContent, about, testomonial, service, project]

@@ -204,8 +204,6 @@ const Entry = () => {
         </div>
       </AnimatedSection>
 
-  
-
       {/* <Take /> */}
     </div>
   );

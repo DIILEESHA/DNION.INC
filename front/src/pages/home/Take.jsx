@@ -280,9 +280,15 @@ const Take = () => {
           </div>
 
           <ul className="bottom_ul">
-            <li className="bottom_li">About Us</li>
-            <li className="bottom_li">Projects</li>
-            <li className="bottom_li">Services</li>
+            <Link className="a" to="/about">
+              <li className="bottom_li">About Us</li>
+            </Link>
+            <Link className="a" to="/projects">
+              <li className="bottom_li">Projects</li>
+            </Link>
+            <Link className="a" to="/service">
+              <li className="bottom_li">Services</li>
+            </Link>
             <li className="bottom_li">Contact Us</li>
           </ul>
           <div className="dolki">

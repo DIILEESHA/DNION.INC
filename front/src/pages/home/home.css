@@ -339,6 +339,7 @@
 .service_sub {
   padding: 10px;
   border: 1px solid #e2e3e9;
+  cursor: pointer;
   /* width: 100%; */
   border-radius: 16px;
 }

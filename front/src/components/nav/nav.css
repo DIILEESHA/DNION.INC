@@ -53,6 +53,13 @@
   font-size: 17px;
 }
 
+.bulla {
+  border-radius:5px;
+  height: 60px;
+
+  width: 60px;
+}
+
 .nav_li {
   font-family: "oswald";
   text-transform: uppercase;

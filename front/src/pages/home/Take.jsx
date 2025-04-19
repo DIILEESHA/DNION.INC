@@ -183,7 +183,9 @@ const Take = () => {
                 },
               }}
             >
-              Get Free Consultation
+              <Link className="a" to="/contact-us">
+                Get Free Consultation
+              </Link>
             </motion.span>
           </motion.button>
         </motion.div>
@@ -256,7 +258,9 @@ const Take = () => {
                     },
                   }}
                 >
-                  Contact Us →
+                  <Link className="a" to="/contact-us">
+                    Contact Us →
+                  </Link>
                 </motion.span>
               </motion.button>
             </div>
@@ -267,7 +271,7 @@ const Take = () => {
           <div className="dg">
             <div className="dospas">
               <Link to="/" className="a">
-                <h2 className="nav_lgos">APC</h2>
+                <h2 className="nav_lgos">AURELIO</h2>
               </Link>
             </div>
             <div className="dospas">
@@ -289,7 +293,9 @@ const Take = () => {
             <Link className="a" to="/service">
               <li className="bottom_li">Services</li>
             </Link>
-            <li className="bottom_li">Contact Us</li>
+            <Link className="a" to="/contact-us">
+              <li className="bottom_li">Contact Us</li>
+            </Link>
           </ul>
           <div className="dolki">
             <div className="liner"></div>
@@ -298,7 +304,7 @@ const Take = () => {
           <div className="dg dalla">
             <div className="dospas ">
               <Link to="/" className="a">
-                <h2 className="nav_lgos">© APC 2025</h2>
+                <h2 className="nav_lgos">© AURELIO 2025</h2>
               </Link>
             </div>
             <div className="dospas">

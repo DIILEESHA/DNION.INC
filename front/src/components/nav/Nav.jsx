@@ -3,6 +3,7 @@ import "./nav.css";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import logo from "../../assets/logo.jpg"
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Nav = () => {
       <div className="nav_grid">
         <div className="nav_sub">
           <Link to="/" className="a">
-            <h2 className="nav_lgo">APC</h2>
+          <img className="bulla" src={logo} alt="" />
           </Link>
         </div>
 

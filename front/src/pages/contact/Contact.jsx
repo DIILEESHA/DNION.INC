@@ -120,8 +120,8 @@ const Contact = () => {
           <h2 className="loka">Let's Get Started</h2>
           <div className="line"></div>
           <p className="loke_p">
-            Let us know what you need—we'll take care of the rest! Fill out the
-            form below to schedule your cleaning.
+          Tell us about your project—we’ll handle the rest!
+Fill out the form below to schedule your consultation.
           </p>
           <form ref={form} onSubmit={sendEmail} className="contact_form">
             <h2 className="contact">Contact Information</h2>

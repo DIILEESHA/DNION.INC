@@ -34,7 +34,9 @@ const Nav = () => {
         </div>
 
         <div className="nav_sub">
-          <button className="get">Contact Us</button>
+          <Link className="a" to="/contact-us">
+            <button className="get">Contact Us</button>
+          </Link>
 
           <div className="hamburger" onClick={openMenu}>
             <FiMenu className="ham_ico" />

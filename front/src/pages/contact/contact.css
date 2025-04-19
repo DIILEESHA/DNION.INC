@@ -1,0 +1,120 @@
+.dawos {
+  background-position: center 12%;
+
+  background-image: url("https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.lokesh {
+  background-color: #f4f4f4;
+  padding: 50px 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loka {
+  font-family: "man";
+  /* font-weight: 300; */
+  /* margin-bottom: 20px; */
+}
+
+.contact_form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.loke_p {
+  font-family: "man";
+  line-height: 150%;
+  margin-bottom: 30px;
+}
+
+.contact {
+  font-family: "man";
+  color: #1a1a1a;
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.form_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form_input {
+  width: 100%;
+  border: 1px solid #dad2d2;
+  outline: none;
+  height: 30px;
+  font-family: "man";
+  /* margin: 10px; */
+}
+
+textarea{
+
+  height: 30px;
+
+    /* padding: 10px; */
+}
+
+
+textarea::content{
+    padding: 20px;
+}
+
+select::content{
+    padding: 20px;
+}
+
+.form_input::placeholder {
+  padding: 5px;
+}
+
+.rty {
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.cosa {
+  background-color: #fae084;
+  padding: 10px 40px;
+  border: none;
+  font-family: "man";
+  /* font-weight: 300; */
+  cursor: pointer;
+}
+
+.form_input::placeholder {
+  font-family: "man";
+}
+
+.one {
+  grid-column: 1/3;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  font-family: "oswald";
+  font-weight: 300;
+  display: block;
+}
+
+@media screen and (max-width: 1140px) {
+  .lokesh {
+    padding: 50px;
+  }
+}
+@media screen and (max-width: 940px) {
+  .lokesh {
+    padding: 50px 20px;
+  }
+  .contact_form {
+    padding: 20px;
+  }
+}

@@ -26,6 +26,7 @@ const About = () => {
         }`;
         const data = await client.fetch(query);
         setAboutData(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching about data:", error);
       } finally {
